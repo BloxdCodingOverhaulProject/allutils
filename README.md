@@ -1,2 +1,2 @@
 # allutils
-A large collection of utilities all bundled under one main file.
+A large collection of utilities all bundled under 1 main file.
