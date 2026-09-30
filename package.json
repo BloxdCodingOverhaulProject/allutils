@@ -1,6 +1,15 @@
 {
-  "devDependencies": {
-    "@types/node": "^26.6.3",
-    "typescript": "^7.0.2"
-  }
+    "devDependencies": {
+        "@types/node": "^26.6.3",
+        "tsdown": "^0.23.0",
+        "typescript": "^7.0.2"
+    },
+    "allowScripts": {
+        "fsevents@2.3.3": true,
+        "esbuild@0.27.2": true
+    },
+    "scripts": {
+        "build": "npx tsdown src/index.ts --format esm --dts --no-splitting --tsconfig ./tsconfig.json"
+    },
+    "type": "module"
 }

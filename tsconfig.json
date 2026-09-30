@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "skipLibCheck": true,
+        "types": ["node"],
+        "declaration": false,
+        "resolveJsonModule": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "moduleResolution": "bundler",
+        "noEmit": true
+    }
+}
