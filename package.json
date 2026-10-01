@@ -9,7 +9,7 @@
         "esbuild@0.27.2": true
     },
     "scripts": {
-        "build": "npx tsdown src/index.ts --format esm --dts --no-splitting --tsconfig ./tsconfig.json"
+        "build": "npx tsdown src/index.ts --dts --no-splitting --no-comments"
     },
     "type": "module"
 }
