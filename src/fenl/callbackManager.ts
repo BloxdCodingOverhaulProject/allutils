@@ -19,7 +19,7 @@ import callbacks from '../json/callbackNames.json'
 // In old versions, a callbackManager object was used, but the revised version
 // is object-oriented and executes with a static registry.
 
-export class Callback {
+export default class Callback {
     // Within this, each callback is its own key and contains regist, which
     // is a record of symbols to functions, and funcs, which is an array
     // of symbols. While not strictly neccessary, this allows for callbacks
