@@ -18,14 +18,6 @@ We'd recommend using Typescript and JSDoc for homogeneity and Bloxd compatibilit
 
 When you're ready (as a BCOP member), just run `git add .`, `git commit -m "YOUR MESSAGE HERE"`, and `git push`!
 
-## Planned Updates
+## Modules
 
-Add your module proposals here!
-
-fenl - Task Scheduler
-
-fenl - Async
-
-fenl - File System
-
-fenl - SetBlock with an RGB Value
+View the module listings at src/index.txt
