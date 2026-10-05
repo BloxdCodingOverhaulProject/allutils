@@ -102,8 +102,3 @@ function typescript(name = 'globalThis', value = Object.create(null)) {
     })
 }
 Object.setPrototypeOf(globalThis, typescript())
-let type = new Type('vector', {
-    x: Primitive.number,
-    y: Primitive.number,
-    name: Primitive.string,
-})
