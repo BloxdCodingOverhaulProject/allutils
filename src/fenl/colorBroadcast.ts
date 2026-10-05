@@ -4,7 +4,7 @@ import aoos from './allOccurencesOfSubstring.js'
  * The styling is of format \{}, where the content within is
  * delimited with semicolons.
  * @example
- * ecb(`\{white}White\{blue}Blue\{red}Red`)
+ * ecb(`/{c;white}White/{c;blue}Blue/{c;red}Red`)
  * @param {string} val The string to be printed with color.
  * @throws {Error} If the string is invalid.
  */
@@ -17,32 +17,29 @@ export default function ecb(val: string) {
     let o: any = [val.slice(0, cols[0])]
     for (let i = 0; i < cols.length - 1; i++) {
         let style: Record<string, any> = {}
-        let idx = cols[i] + 4
+        let idx = cols[i] + 2
         // Parse through the characters
         while (val[idx] != '}') {
             let key = ''
-            while (val[idx++] != ';') {
+            do {
                 if (idx == val.length)
-                    throw new Error(
-                        `/{red}ecb/{white}: /{lightred}Invalid ECB String`,
-                    )
+                    throw new Error(`Something bad happened. Try again.`)
                 key += val[idx]
-            }
+            } while (val[++idx] != ';')
+            idx++
             let value = ''
-            while (val[idx++] != ';') {
+            do {
                 if (idx == val.length)
-                    throw new Error(
-                        `/{red}ecb/{white}: /{lightred}Invalid ECB String`,
-                    )
-                key += val[idx]
-            }
+                    throw new Error(`Something bad happened. Try again.`)
+                value += val[idx]
+            } while (val[++idx] != ';' && val[idx] != '}')
             style[key] = value
         }
         // Push the color and the text, using the next color marker as an endpoint
         o.push({
-            str: val.slice(idx + 1, cols[idx + 1]),
+            str: val.slice(idx + 1, cols[i + 1]),
             style: {
-                color: style?.c || style?.col || style?.color || style?.[''],
+                color: style?.c || style?.col || style?.color,
             },
         })
     }
