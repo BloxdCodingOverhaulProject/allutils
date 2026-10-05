@@ -37,7 +37,7 @@ const Primitive = {
     function: genericPrimitiveType('function'),
     object: genericPrimitiveType('object'),
 }
-function setToTypescript(value) {
+function setToTypescript() {
     return new Proxy(Object.create(null), {
         set(target, property, newValue, receiver) {
             if (typeof newValue != 'object') {
@@ -64,7 +64,7 @@ function setToTypescript(value) {
                 let cast2 = old.type.isType(newValue.value) // If they are both of type newValue.type
                 if (cast1 === true && cast2 === true) {
                     console.log(
-                        `Note: ${old.type.name} seems to be like ${newValue.type.name}; setting ${property} to type ${old.type.name} (guessing it to be stronger)`,
+                        `Note: ${old.type.name} seems to be like ${newValue.type.name}; setting '${property}' to type ${old.type.name} (guessing it to be stronger)`,
                     )
                 } else if (cast1 === true) {
                     // if old is a superset
@@ -88,16 +88,4 @@ function setToTypescript(value) {
         },
     })
 }
-Object.setPrototypeOf(globalThis, setToTypescript(globalThis))
-let type = new Type('vector', {
-    x: Primitive.number,
-    y: Primitive.number,
-})
-globalThis.a = {
-    type,
-    value: {
-        x: 0,
-        y: 0,
-    },
-}
-globalThis.a = { x: 0, y: 0 }
+Object.setPrototypeOf(globalThis, setToTypescript())
