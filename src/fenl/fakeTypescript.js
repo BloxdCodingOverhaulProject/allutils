@@ -9,7 +9,7 @@ class Type {
         for (let [k, v] of this.supposed) {
             let o = v.isType(val[k])
             if (o !== true) {
-                return `${k} of type ${this.name}: ${o}`
+                return `Type ${this.name}.${k}: ${o}`
             }
         }
         return true
@@ -21,7 +21,7 @@ function genericPrimitiveType(type) {
             if (typeof val == type) {
                 return true
             } else {
-                return `${val} is not a ${type}`
+                return `${JSON.stringify(val)} is not a ${type}`
             }
         },
         name: type,
@@ -80,11 +80,12 @@ function typescript(name = 'globalThis', value = Object.create(null)) {
                     )
                 } else {
                     console.log(
-                        `Error: ${name}.${property} (${JSON.stringify(old.value)}) of type ${old.type.name} cannot be coerced to type ${newValue.type.name} (${JSON.stringify(newValue.value)}); ${newValue.type.isType(old.value)}; ${old.type.isType(newValue.value)}`,
+                        `Error: ${name}.${property} (${JSON.stringify(old.value)}) of type ${old.type.name} cannot be coerced to type ${newValue.type.name} (${JSON.stringify(newValue.value)}); ${cast1}; ${cast2}`,
                     )
                 }
             }
-            if (typeof newValue.value == 'object') {
+
+            if (typeof newValue.value == 'object' && newValue.value !== null) {
                 let oldValue = newValue.value
                 newValue.value = typescript(name + '.' + property)
                 for (let [k, v] of Object.entries(oldValue)) {
