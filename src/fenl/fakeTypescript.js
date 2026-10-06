@@ -14,6 +14,22 @@ globalThis.Type = class {
         }
         return true
     }
+    static Union(name, ...types) {
+        return {
+            name,
+            isType(val) {
+                let ans = ''
+                for (let type of types) {
+                    let o = type.isType(val)
+                    if (o === true) {
+                        return true
+                    }
+                    ans += ';' + o
+                }
+                return ans
+            },
+        }
+    }
 }
 function genericPrimitiveType(type) {
     return {
