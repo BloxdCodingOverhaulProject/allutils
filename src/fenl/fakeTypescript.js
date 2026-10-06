@@ -1,4 +1,4 @@
-class Type {
+globalThis.Type = class {
     supposed
     name
     constructor(name, val) {
@@ -27,7 +27,7 @@ function genericPrimitiveType(type) {
         name: type,
     }
 }
-const Primitive = {
+globalThis.Primitive = {
     number: genericPrimitiveType('number'),
     string: genericPrimitiveType('string'),
     boolean: genericPrimitiveType('boolean'),
