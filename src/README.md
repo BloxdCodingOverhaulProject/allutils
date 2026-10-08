@@ -1,0 +1,10 @@
+# Module Index
+> [!NOTE]
+> Please add your modules here so we don't create the same thing twice!
+
+- `fenl/callbackManager` : Create custom callbacks
+- `fenl/tasks` : Task scheduler
+- `fenl/timekeeper` : Global Time variable
+- `fenl/colorBroadcast` : Overwrites api.log to have color (NO INSTALL NEEDED)
+- `fenl/allOccurencesOfSubstring` : Finds indexes of all occurences of substring in string
+- `fenl/fakeTypescript` : Not included in base, is a typescript implementation.
